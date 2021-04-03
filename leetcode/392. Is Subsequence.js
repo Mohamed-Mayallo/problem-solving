@@ -11,21 +11,15 @@
 
 var isSubsequence = function(s, t) {
     let i = 0,
-        j = 0,
-        isMatched = false
+        j = 0
     if (!s) return true
     while (i < s.length && j < t.length) {
         let iS = s[i],
             jT = t[j]
-        if (iS === jT) {
-            i++
-            isMatched = true
-        }
-        else isMatched = false
+        if (iS === jT) i++
         j++
     }
-    isMatched = isMatched && i >= s.length
-    return isMatched
+    return i > s.length - 1
 };
 isSubsequence("acb","ahbgdc")
 
