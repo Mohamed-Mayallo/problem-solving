@@ -8,7 +8,7 @@
  * First solution
  * -----------------
  * Time complexity  : O(N)
- * Space complexity : O(1)
+ * Space complexity : O(N)
  */
 
 function pickingNumbers(a) {
