@@ -8,7 +8,7 @@
  * First solution
  * -----------------
  * Time complexity  : O(Nlog(N))
- * Space complexity : O(1)
+ * Space complexity : O(N)
  */
 
 /**
