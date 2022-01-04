@@ -1,7 +1,7 @@
 /**
- * 111. Minimum Depth of Binary Tree
+ * Minimum Depth of a Binary Tree
  * Easy
- * https://leetcode.com/problems/minimum-depth-of-binary-tree/
+ * https://www.educative.io/courses/grokking-the-coding-interview/3jwVx84OMkO
  */
 
 /**
@@ -11,25 +11,21 @@
  * Space complexity : O(N)
  */
 
-function traverse(node, depth) {
-    if (node && !node.left && !node.right) return depth;
-    if (!node) return Infinity;
-    return Math.min(traverse(node.left, depth + 1), traverse(node.right, depth + 1));
-}
-
-var minDepth = function (root) {
-    if (!root) return 0;
-    return traverse(root, 1);
-};
-
 /**
- * Second solution
- * -----------------
- * Time complexity  : O(N)
- * Space complexity : O(N)
+  Problem Statement
+
+  Find the minimum depth of a binary tree. The minimum depth is the number of nodes along the shortest path from the root node to the nearest leaf node.
  */
 
-var minDepth = function (root) {
+class TreeNode {
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+const find_minimum_depth = function (root) {
     if (!root) return 0;
     let queue = [[root]];
     let visited = new Set();
