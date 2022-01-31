@@ -7,7 +7,7 @@
 /**
  * First solution
  * -----------------
- * Time complexity  : insert_num: O(log(N)), find_median: O(1)
+ * Time complexity  : addNum: O(log N), findMedian: O(1)
  * Space complexity : O(N)
  */
 
@@ -60,10 +60,3 @@ MedianFinder.prototype.findMedian = function () {
     }
     return this.maxHeap[0];
 };
-
-/**
- * Your MedianFinder object will be instantiated and called as such:
- * var obj = new MedianFinder()
- * obj.addNum(num)
- * var param_2 = obj.findMedian()
- */

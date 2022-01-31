@@ -1,12 +1,12 @@
 /**
  * Find the Median of a Number Stream
- * Medium
+ * Hard
  * https://www.educative.io/courses/grokking-the-coding-interview/3Yj2BmpyEy4
  */
 
 /**
-  Problem Statement#
-  
+  Problem Statement
+
   Design a class to calculate the median of a number stream. The class should have the following two methods:
 
   insertNum(int num): stores the number in the class
@@ -26,8 +26,8 @@
 /**
  * First solution
  * -----------------
- * Time complexity  : insert_num: O(log(N)), find_median: O(1)
- * Space complexity : O(N)
+ * Time complexity  : insertNum: O(log K), findMedian: O(K)
+ * Space complexity : O(K)
  */
 
 class MedianOfAStream {
@@ -58,13 +58,7 @@ class MedianOfAStream {
         }
     }
 
-    insert_num(num) {
-        if (!this.maxHeap.length || this.maxHeap[0] >= num) {
-            this.addToMaxHeap(num);
-        } else {
-            this.addToMinHeap(num);
-        }
-
+    rebalanceHeaps() {
         if (this.maxHeap.length > this.minHeap.length + 1) {
             let max = this.maxHeap.shift();
             this.addToMinHeap(max);
@@ -72,6 +66,15 @@ class MedianOfAStream {
             let min = this.minHeap.shift();
             this.addToMaxHeap(min);
         }
+    }
+
+    insert_num(num) {
+        if (!this.maxHeap.length || this.maxHeap[0] >= num) {
+            this.addToMaxHeap(num);
+        } else {
+            this.addToMinHeap(num);
+        }
+        this.rebalanceHeaps();
     }
 
     find_median() {
