@@ -14,7 +14,6 @@
   If the count of numbers inserted in the class is even, the median will be the average of the middle two numbers.
 
   Example 1:
-
   1. insertNum(3)
   2. insertNum(1)
   3. findMedian() -> output: 2
@@ -32,56 +31,56 @@
  */
 
 class MedianOfAStream {
-  constructor() {
-    this.minHeap = [];
-    this.maxHeap = [];
-  }
-
-  addToMinHeap(num) {
-    if (num <= this.minHeap[0]) {
-      this.minHeap.unshift(num);
-    } else if (num >= this.minHeap[this.minHeap.length - 1]) {
-      this.minHeap.push(num);
-    } else {
-      this.minHeap.push(num);
-      this.minHeap.sort((a, b) => a - b);
+    constructor() {
+        this.minHeap = [];
+        this.maxHeap = [];
     }
-  }
 
-  addToMaxHeap(num) {
-    if (num >= this.maxHeap[0]) {
-      this.maxHeap.unshift(num);
-    } else if (num <= this.maxHeap[this.maxHeap.length - 1]) {
-      this.maxHeap.push(num);
-    } else {
-      this.maxHeap.push(num);
-      this.maxHeap.sort((a, b) => b - a);
+    addToMinHeap(num) {
+        if (num <= this.minHeap[0]) {
+            this.minHeap.unshift(num);
+        } else if (num >= this.minHeap[this.minHeap.length - 1]) {
+            this.minHeap.push(num);
+        } else {
+            this.minHeap.push(num);
+            this.minHeap.sort((a, b) => a - b);
+        }
     }
-  }
 
-  rebalanceHeaps() {
-    if (this.maxHeap.length > this.minHeap.length + 1) {
-      let max = this.maxHeap.shift();
-      this.addToMinHeap(max);
-    } else if (this.maxHeap.length < this.minHeap.length) {
-      let min = this.minHeap.shift();
-      this.addToMaxHeap(min);
+    addToMaxHeap(num) {
+        if (num >= this.maxHeap[0]) {
+            this.maxHeap.unshift(num);
+        } else if (num <= this.maxHeap[this.maxHeap.length - 1]) {
+            this.maxHeap.push(num);
+        } else {
+            this.maxHeap.push(num);
+            this.maxHeap.sort((a, b) => b - a);
+        }
     }
-  }
 
-  insert_num(num) {
-    if (!this.maxHeap.length || this.maxHeap[0] >= num) {
-      this.addToMaxHeap(num);
-    } else {
-      this.addToMinHeap(num);
+    rebalanceHeaps() {
+        if (this.maxHeap.length > this.minHeap.length + 1) {
+            let max = this.maxHeap.shift();
+            this.addToMinHeap(max);
+        } else if (this.maxHeap.length < this.minHeap.length) {
+            let min = this.minHeap.shift();
+            this.addToMaxHeap(min);
+        }
     }
-    this.rebalanceHeaps();
-  }
 
-  find_median() {
-    if (this.maxHeap.length === this.minHeap.length) {
-      return (this.maxHeap[0] + this.minHeap[0]) / 2;
+    insert_num(num) {
+        if (!this.maxHeap.length || this.maxHeap[0] >= num) {
+            this.addToMaxHeap(num);
+        } else {
+            this.addToMinHeap(num);
+        }
+        this.rebalanceHeaps();
     }
-    return this.maxHeap[0];
-  }
+
+    find_median() {
+        if (this.maxHeap.length === this.minHeap.length) {
+            return (this.maxHeap[0] + this.minHeap[0]) / 2;
+        }
+        return this.maxHeap[0];
+    }
 }
