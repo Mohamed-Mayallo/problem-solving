@@ -1,7 +1,7 @@
 /**
  * 386 · Longest Substring with At Most K Distinct Characters
  * Medium
- * https://leetcode.com/problems/find-center-of-star-graph/
+ * https://www.lintcode.com/problem/386/
  */
 
 /**
