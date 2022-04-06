@@ -24,29 +24,29 @@
 /**
  * First solution
  * -----------------
- * Time complexity  : add O(M Log(M)) where M is the matrix length
- * Space complexity : add O(N) where N is the total number in arrays
+ * Time complexity  : O(M Log(M)) where M is the matrix length
+ * Space complexity : O(N) where N is the total number in arrays
  */
 
 const find_Kth_smallest = function (lists, k) {
-  const minHeap = [];
-  for (let i = 0; i < lists.length; i++) {
-    const arr = lists[i];
-    minHeap.push({ n: arr[0], arrIndex: i, nextIndex: 1 });
-  }
-  minHeap.sort((a, b) => a.n - b.n);
-  const merged = [];
-  while (minHeap.length || merged.length < k) {
-    const peek = minHeap.shift();
-    merged.push(peek.n);
-    if (peek.nextIndex < lists[peek.arrIndex].length) {
-      minHeap.push({
-        n: lists[peek.arrIndex][peek.nextIndex],
-        arrIndex: peek.arrIndex,
-        nextIndex: peek.nextIndex + 1
-      });
-      minHeap.sort((a, b) => a.n - b.n);
+    const minHeap = [];
+    for (let i = 0; i < lists.length; i++) {
+        const arr = lists[i];
+        minHeap.push({ n: arr[0], arrIndex: i, nextIndex: 1 });
     }
-  }
-  return merged[k - 1];
+    minHeap.sort((a, b) => a.n - b.n);
+    const merged = [];
+    while (minHeap.length || merged.length < k) {
+        const peek = minHeap.shift();
+        merged.push(peek.n);
+        if (peek.nextIndex < lists[peek.arrIndex].length) {
+            minHeap.push({
+                n: lists[peek.arrIndex][peek.nextIndex],
+                arrIndex: peek.arrIndex,
+                nextIndex: peek.nextIndex + 1,
+            });
+            minHeap.sort((a, b) => a.n - b.n);
+        }
+    }
+    return merged[k - 1];
 };
