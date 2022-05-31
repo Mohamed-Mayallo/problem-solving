@@ -7,7 +7,7 @@
 /**
  * First solution
  * -----------------
- * Time complexity  : O(N)
+ * Time complexity  : O(N + M)
  * Space complexity : O(N)
  */
 
@@ -44,7 +44,7 @@ var mergeTwoLists = function (list1, list2) {
 /**
  * Second solution
  * -----------------
- * Time complexity  : O(N)
+ * Time complexity  : O(N + M)
  * Space complexity : O(N)
  */
 
