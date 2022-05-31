@@ -17,19 +17,16 @@ var mergeTwoLists = function (list1, list2) {
 
     let head = null;
     if (list1.val <= list2.val) {
-        head = new ListNode(list1.val);
+        head = list1;
         list1 = list1.next;
     } else {
-        head = new ListNode(list2.val);
+        head = list2;
         list2 = list2.next;
     }
     let headRef = head;
 
     while (list1 && list2) {
-        const node =
-            list1.val <= list2.val
-                ? new ListNode(list1.val)
-                : new ListNode(list2.val);
+        const node = list1.val <= list2.val ? list1 : list2;
 
         head.next = node;
         head = head.next;
